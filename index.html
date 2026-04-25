@@ -251,6 +251,7 @@
         .color-govtexams { border-left-color: #ffa500; }
         .color-iti { border-left-color: #666; }
         .color-emerging { border-left-color: #ee66aa; }
+        .color-diploma { border-left-color: #008b8b; }
 
         @media (max-width: 768px) {
             .header h1 { font-size: 24px; }
@@ -277,6 +278,7 @@
             <button class="nav-btn" onclick="showTab('medicine')">⚕️ Medicine</button>
             <button class="nav-btn" onclick="showTab('law')">⚖️ Law</button>
             <button class="nav-btn" onclick="showTab('govtexams')">🏛️ Civil Services</button>
+            <button class="nav-btn" onclick="showTab('diploma')">🎓 Diploma</button>
             <button class="nav-btn" onclick="showTab('iti')">🔧 Technical</button>
             <button class="nav-btn" onclick="showTab('emerging')">🚀 Emerging</button>
         </div>
@@ -305,6 +307,11 @@
                     <div class="icon">🏛️</div>
                     <h3>Civil Services</h3>
                     <p>UPSC, KAS, KPSC, Banking</p>
+                </div>
+                <div class="overview-card" onclick="showTab('diploma')">
+                    <div class="icon">🎓</div>
+                    <h3>Diploma</h3>
+                    <p>Engineering Diploma Branches</p>
                 </div>
                 <div class="overview-card" onclick="showTab('iti')">
                     <div class="icon">🔧</div>
@@ -567,6 +574,74 @@
                         <li>Defense Officer</li>
                         <li>Revenue Inspector</li>
                         <li>Forest Officer</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Diploma Tab -->
+        <div id="diploma" class="content">
+            <div class="page-header" style="background: linear-gradient(135deg, #008b8b 0%, #006666 100%);">
+                <h1>Diploma - Engineering Branches</h1>
+                <p>Pursue a 3-year diploma after 10th SSLC across diverse engineering fields</p>
+            </div>
+
+            <div class="pathway-section">
+                <h2>Career Pathway</h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-diploma">10th SSLC</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-diploma">Diploma (3 Years)</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-diploma">Job / Lateral Entry to B.E.</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-diploma">Career</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Engineering Branches</h3>
+                    <ul>
+                        <li>Civil Engineering</li>
+                        <li>Mechanical Engineering</li>
+                        <li>Electrical &amp; Electronics Engineering</li>
+                        <li>Electronics &amp; Communication Engineering</li>
+                        <li>Computer Science Engineering</li>
+                        <li>Information Science</li>
+                        <li>Automobile Engineering</li>
+                        <li>Mechatronics Engineering</li>
+                        <li>Robotics &amp; Automation</li>
+                        <li>Artificial Intelligence &amp; Machine Learning</li>
+                        <li>Tool &amp; Die Engineering</li>
+                        <li>Instrumentation Technology</li>
+                        <li>Chemical Engineering</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Admission Process</h3>
+                    <ul>
+                        <li>Eligibility: 10th SSLC Pass</li>
+                        <li>DCET (Diploma Common Entrance Test)</li>
+                        <li>Karnataka Examinations Authority (KEA) Counseling</li>
+                        <li>Government &amp; Private Polytechnic Colleges</li>
+                        <li>Merit-Based Direct Admission</li>
+                        <li>Lateral Entry to 2nd Year B.E./B.Tech</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Career Outcomes</h3>
+                    <ul>
+                        <li>Core Engineering Jobs (Site Engineer, Production, Maintenance)</li>
+                        <li>IT &amp; Software Careers (Developer, Tester, Support Engineer)</li>
+                        <li>Government Jobs (PWD, Railways, BESCOM, KPTCL)</li>
+                        <li>Diploma to Engineering (Lateral Entry to B.E/B.Tech)</li>
+                        <li>Industrial &amp; Manufacturing Careers (Factories, Automation, CNC)</li>
+                        <li>Entrepreneurship (Contractor, Workshop, Service Center)</li>
+                        <li>Specialized Technical Roles (Automation, Robotics, Tool &amp; Die)</li>
+                        <li>Overseas &amp; Skilled Technician Opportunities</li>
                     </ul>
                 </div>
             </div>
