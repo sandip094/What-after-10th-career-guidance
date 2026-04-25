@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karnataka Career Pathways 2025-26</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        .navigation {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px 40px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e0e0e0;
+            justify-content: center;
+        }
+
+        .nav-btn {
+            padding: 10px 18px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-btn:hover {
+            border-color: #667eea;
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        .content {
+            padding: 40px;
+            display: none;
+        }
+
+        .content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .overview-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .overview-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .overview-card .icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .overview-card h3 {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .overview-card p {
+            font-size: 12px;
+            color: #999;
+        }
+
+        .pathway-section h2 {
+            color: #667eea;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .pathway-timeline {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .timeline-step {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 13px;
+            flex: 0 0 auto;
+        }
+
+        .timeline-arrow {
+            color: #667eea;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .info-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.1);
+        }
+
+        .info-card h3 {
+            color: #667eea;
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-card li {
+            padding: 8px 0;
+            color: #555;
+            font-size: 13px;
+            line-height: 1.6;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .info-card li:last-child {
+            border-bottom: none;
+        }
+
+        .info-card li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .page-header h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .page-header p {
+            font-size: 13px;
+            opacity: 0.95;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 40px;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .color-engineering { border-left-color: #3366cc; }
+        .color-medicine { border-left-color: #00aa66; }
+        .color-law { border-left-color: #ff6b6b; }
+        .color-govtexams { border-left-color: #ffa500; }
+        .color-iti { border-left-color: #666; }
+        .color-emerging { border-left-color: #ee66aa; }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 24px; }
+            .navigation { flex-direction: column; align-items: center; }
+            .nav-btn { width: 100%; }
+            .info-grid { grid-template-columns: 1fr; }
+            .pathway-timeline { flex-direction: column; align-items: flex-start; }
+            .timeline-arrow { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🎓 Career Options Flowchart</h1>
+            <p>After 10th (SSLC) & 12th (PUC) - Karnataka 2025-26</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation">
+            <button class="nav-btn active" onclick="showTab('overview')">📋 Overview</button>
+            <button class="nav-btn" onclick="showTab('engineering')">⚙️ Engineering</button>
+            <button class="nav-btn" onclick="showTab('medicine')">⚕️ Medicine</button>
+            <button class="nav-btn" onclick="showTab('law')">⚖️ Law</button>
+            <button class="nav-btn" onclick="showTab('govtexams')">🏛️ Civil Services</button>
+            <button class="nav-btn" onclick="showTab('iti')">🔧 Technical</button>
+            <button class="nav-btn" onclick="showTab('emerging')">🚀 Emerging</button>
+        </div>
+
+        <!-- Content Sections -->
+
+        <!-- Overview Tab -->
+        <div id="overview" class="content active">
+            <div class="overview-grid">
+                <div class="overview-card" onclick="showTab('engineering')">
+                    <div class="icon">⚙️</div>
+                    <h3>Engineering</h3>
+                    <p>Computer Science, Mechanical, Electronics</p>
+                </div>
+                <div class="overview-card" onclick="showTab('medicine')">
+                    <div class="icon">⚕️</div>
+                    <h3>Medicine</h3>
+                    <p>MBBS, BDS, B.Pharm, Nursing</p>
+                </div>
+                <div class="overview-card" onclick="showTab('law')">
+                    <div class="icon">⚖️</div>
+                    <h3>Law</h3>
+                    <p>BA LLB, BBA LLB, Corporate Law</p>
+                </div>
+                <div class="overview-card" onclick="showTab('govtexams')">
+                    <div class="icon">🏛️</div>
+                    <h3>Civil Services</h3>
+                    <p>UPSC, KAS, KPSC, Banking</p>
+                </div>
+                <div class="overview-card" onclick="showTab('iti')">
+                    <div class="icon">🔧</div>
+                    <h3>ITI/Polytechnic</h3>
+                    <p>Technical Skills, Diplomas</p>
+                </div>
+                <div class="overview-card" onclick="showTab('emerging')">
+                    <div class="icon">🚀</div>
+                    <h3>Emerging Careers</h3>
+                    <p>AI, Data Science, Cybersecurity</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Engineering Tab -->
+        <div id="engineering" class="content">
+            <div class="page-header color-engineering">
+                <h1>Science A - Engineering</h1>
+                <p>Build tomorrow's technology and infrastructure</p>
+            </div>
+
+            <div class="pathway-section">
+                <h2>Career Pathway</h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-engineering">10th SSLC</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-engineering">11th-12th PUC</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-engineering">Engineering Degree</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-engineering">Career</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Popular Courses</h3>
+                    <ul>
+                        <li>Computer Science & Engineering</li>
+                        <li>Electronics & Communication</li>
+                        <li>Mechanical Engineering</li>
+                        <li>Civil Engineering</li>
+                        <li>Electrical Engineering</li>
+                        <li>Information Science</li>
+                        <li>AI & ML</li>
+                        <li>Robotics & Automation</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Entrance Exams</h3>
+                    <ul>
+                        <li>JEE Main & Advanced (National)</li>
+                        <li>KCET (Karnataka)</li>
+                        <li>COMEDK (Private)</li>
+                        <li>BITSAT</li>
+                        <li>VITEEE</li>
+                        <li>SRMJEEE</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Career Outcomes</h3>
+                    <ul>
+                        <li>Software Developer</li>
+                        <li>Data Scientist</li>
+                        <li>Electronics Engineer</li>
+                        <li>Startup Founder</li>
+                        <li>Higher Studies (M.Tech/MS)</li>
+                        <li>PSUs & Govt Jobs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medicine Tab -->
+        <div id="medicine" class="content">
+            <div class="page-header" style="background: linear-gradient(135deg, #00aa66 0%, #009955 100%);">
+                <h1>Science B - Medicine & Health</h1>
+                <p>Pursue healthcare and medical excellence</p>
+            </div>
+
+            <div class="pathway-section">
+                <h2>Career Pathway</h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-medicine">10th SSLC</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-medicine">11th-12th PUC</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-medicine">Medical Degree</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-medicine">Career</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Popular Courses</h3>
+                    <ul>
+                        <li>MBBS</li>
+                        <li>BDS (Dentistry)</li>
+                        <li>BAMS (Ayurvedic)</li>
+                        <li>BHMS (Homeopathy)</li>
+                        <li>B.Pharm (Pharmacy)</li>
+                        <li>B.Sc Nursing</li>
+                        <li>Physiotherapy (BPT)</li>
+                        <li>Veterinary Science (BVSc)</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Entrance Exams</h3>
+                    <ul>
+                        <li>NEET-UG (National)</li>
+                        <li>KCET (Karnataka - Paramedical)</li>
+                        <li>AIIMS</li>
+                        <li>JIPMER</li>
+                        <li>State Quota Counseling</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Career Outcomes</h3>
+                    <ul>
+                        <li>General Physician</li>
+                        <li>Surgeon</li>
+                        <li>Dentist</li>
+                        <li>Pharmacist</li>
+                        <li>Hospital Administrator</li>
+                        <li>Medical Researcher</li>
+                        <li>Public Health Officer</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Law Tab -->
+        <div id="law" class="content">
+            <div class="page-header" style="background: linear-gradient(135deg, #ff6b6b 0%, #ff4444 100%);">
+                <h1>Law - Legal Studies</h1>
+                <p>Pursue justice and legal excellence</p>
+            </div>
+
+            <div class="pathway-section">
+                <h2>Career Pathway</h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-law">10th SSLC</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-law">11th-12th PUC</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-law">Law Degree</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-law">Career</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Popular Courses</h3>
+                    <ul>
+                        <li>BA LLB (5 Year)</li>
+                        <li>BBA LLB (5 Year)</li>
+                        <li>B.Com LLB (5 Year)</li>
+                        <li>LLB (3 Year after graduation)</li>
+                        <li>LLM (Masters)</li>
+                        <li>Corporate Law</li>
+                        <li>Criminal Law</li>
+                        <li>Intellectual Property Law</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Entrance Exams</h3>
+                    <ul>
+                        <li>CLAT (National)</li>
+                        <li>LSAT India</li>
+                        <li>AILET</li>
+                        <li>MH CET Law</li>
+                        <li>KCET Law (Karnataka)</li>
+                        <li>DU LLB</li>
+                        <li>BHU UET Law</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Career Outcomes</h3>
+                    <ul>
+                        <li>Lawyer/Advocate</li>
+                        <li>Corporate Legal Counsel</li>
+                        <li>Judge</li>
+                        <li>Legal Consultant</li>
+                        <li>Public Prosecutor</li>
+                        <li>Patent Attorney</li>
+                        <li>Law Professor</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Government Exams Tab -->
+        <div id="govtexams" class="content">
+            <div class="page-header" style="background: linear-gradient(135deg, #ffa500 0%, #ff8c00 100%);">
+                <h1>Government Exams - Civil Services</h1>
+                <p>Serve the nation through government positions</p>
+            </div>
+
+            <div class="pathway-section">
+                <h2>Career Pathway</h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-govtexams">10th SSLC</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-govtexams">12th PUC</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-govtexams">Graduation</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-govtexams">Govt Exams</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Preparation Routes</h3>
+                    <ul>
+                        <li>Any Degree (Arts/Science/Commerce)</li>
+                        <li>BA Public Administration</li>
+                        <li>BA Political Science</li>
+                        <li>Self-Study + Coaching</li>
+                        <li>UPSC/KAS Coaching Centers</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Major Exams</h3>
+                    <ul>
+                        <li>UPSC (IAS/IPS/IFS)</li>
+                        <li>KAS (Karnataka Administrative)</li>
+                        <li>KPSC</li>
+                        <li>SSC CGL</li>
+                        <li>Railway Recruitment Board</li>
+                        <li>Banking (IBPS/SBI)</li>
+                        <li>Defense (NDA/CDS)</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Career Outcomes</h3>
+                    <ul>
+                        <li>IAS/IPS Officer</li>
+                        <li>KAS Officer (Tahsildar, DC)</li>
+                        <li>Police Inspector/SI</li>
+                        <li>Bank PO/Clerk</li>
+                        <li>Defense Officer</li>
+                        <li>Revenue Inspector</li>
+                        <li>Forest Officer</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ITI & Polytechnic Tab -->
+        <div id="iti" class="content">
+            <div class="page-header" style="background: linear-gradient(135deg, #666 0%, #333 100%);">
+                <h1>ITI & Polytechnic - Technical Skills</h1>
+                <p>Build hands-on technical expertise</p>
+            </div>
+
+            <div class="pathway-section">
+                <h2>Career Pathway</h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-iti">10th SSLC</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-iti">ITI/Polytechnic</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-iti">Diploma/Certificate</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-iti">Career</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Popular Courses</h3>
+                    <ul>
+                        <li>ITI Electrician</li>
+                        <li>ITI Fitter</li>
+                        <li>ITI Mechanic</li>
+                        <li>ITI Welder</li>
+                        <li>ITI Electronics</li>
+                        <li>Polytechnic Civil</li>
+                        <li>Polytechnic Mechanical</li>
+                        <li>Polytechnic Computer Science</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Admission Process</h3>
+                    <ul>
+                        <li>Direct Admission (Merit Based)</li>
+                        <li>Govt ITI (Free/Subsidized)</li>
+                        <li>DCET (Polytechnic Entrance)</li>
+                        <li>Karnataka Diploma (KCET)</li>
+                        <li>Placement assistance available</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Career Outcomes</h3>
+                    <ul>
+                        <li>Skilled Technician</li>
+                        <li>Factory Supervisor</li>
+                        <li>Licensed Electrician</li>
+                        <li>Railway Technical Staff</li>
+                        <li>KSEB/BESCOM Technician</li>
+                        <li>Lateral Entry to Engineering</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emerging Careers Tab -->
+        <div id="emerging" class="content">
+            <div class="page-header" style="background: linear-gradient(135deg, #ee66aa 0%, #dd5599 100%);">
+                <h1>Emerging Careers - Future Tech</h1>
+                <p>Shape the future with cutting-edge technology</p>
+            </div>
+
+            <div class="pathway-section">
+                <h2>Career Pathway</h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-emerging">10th SSLC</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-emerging">11th-12th PUC</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-emerging">Specialized Degree</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-emerging">Future Career</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Emerging Courses</h3>
+                    <ul>
+                        <li>AI & Machine Learning</li>
+                        <li>Data Science</li>
+                        <li>Cybersecurity</li>
+                        <li>Blockchain</li>
+                        <li>Game Design</li>
+                        <li>Digital Marketing</li>
+                        <li>UX/UI Design</li>
+                        <li>Cloud Computing</li>
+                        <li>Renewable Energy</li>
+                        <li>Biotechnology</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Pathways</h3>
+                    <ul>
+                        <li>Engineering + Specialization</li>
+                        <li>B.Sc Computer Science</li>
+                        <li>BCA (Bachelor of Computer Applications)</li>
+                        <li>B.Des (Design)</li>
+                        <li>Online Learning (Coursera/edX)</li>
+                        <li>Industry Internships</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Future Career Outcomes</h3>
+                    <ul>
+                        <li>AI/ML Engineer</li>
+                        <li>Data Scientist</li>
+                        <li>Cybersecurity Analyst</li>
+                        <li>Game Developer</li>
+                        <li>Cloud Architect</li>
+                        <li>Robotics Engineer</li>
+                        <li>Environmental Consultant</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Karnataka Career Pathways 2025-26 | Guide for Students | Explore, Plan & Succeed</p>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all content
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Show selected content
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
