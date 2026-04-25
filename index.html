@@ -252,6 +252,8 @@
         .color-iti { border-left-color: #666; }
         .color-emerging { border-left-color: #ee66aa; }
         .color-diploma { border-left-color: #008b8b; }
+        .color-commerce { border-left-color: #d97706; }
+        .color-arts { border-left-color: #9b59b6; }
 
         @media (max-width: 768px) {
             .header h1 { font-size: 24px; }
@@ -277,6 +279,8 @@
             <button class="nav-btn" onclick="showTab('engineering')">⚙️ Engineering</button>
             <button class="nav-btn" onclick="showTab('medicine')">⚕️ Medicine</button>
             <button class="nav-btn" onclick="showTab('law')">⚖️ Law</button>
+            <button class="nav-btn" onclick="showTab('commerce')">💼 Commerce</button>
+            <button class="nav-btn" onclick="showTab('arts')">🎨 Arts</button>
             <button class="nav-btn" onclick="showTab('govtexams')">🏛️ Civil Services</button>
             <button class="nav-btn" onclick="showTab('diploma')">🎓 Diploma</button>
             <button class="nav-btn" onclick="showTab('iti')">🔧 Technical</button>
@@ -302,6 +306,16 @@
                     <div class="icon">⚖️</div>
                     <h3>Law</h3>
                     <p>BA LLB, BBA LLB, Corporate Law</p>
+                </div>
+                <div class="overview-card" onclick="showTab('commerce')">
+                    <div class="icon">💼</div>
+                    <h3>Commerce</h3>
+                    <p>B.Com, BBA, CA, CS, CMA</p>
+                </div>
+                <div class="overview-card" onclick="showTab('arts')">
+                    <div class="icon">🎨</div>
+                    <h3>Arts &amp; Humanities</h3>
+                    <p>BA, Journalism, Psychology, Design</p>
                 </div>
                 <div class="overview-card" onclick="showTab('govtexams')">
                     <div class="icon">🏛️</div>
@@ -514,6 +528,123 @@
                         <li>Public Prosecutor</li>
                         <li>Patent Attorney</li>
                         <li>Law Professor</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Commerce Tab -->
+        <div id="commerce" class="content">
+            <div class="page-header" style="background: linear-gradient(135deg, #d97706 0%, #b45309 100%);">
+                <h1>Commerce - Business &amp; Finance</h1>
+                <p>Build a career in business, finance, accounting, and management</p>
+            </div>
+
+            <div class="pathway-section">
+                <h2>Career Pathway</h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-commerce">10th SSLC</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-commerce">11th-12th PUC (Commerce)</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-commerce">Degree / Professional Course</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-commerce">Career</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Popular Courses</h3>
+                    <ul>
+                        <li>B.Com (General / Honours)</li>
+                        <li>BBA (Bachelor of Business Administration)</li>
+                        <li>BBM (Bachelor of Business Management)</li>
+                        <li>BBA Finance / Marketing / HR / Logistics</li>
+                        <li>CA (Chartered Accountancy)</li>
+                        <li>CS (Company Secretary)</li>
+                        <li>CMA (Cost &amp; Management Accountancy)</li>
+                        <li>CFA (Chartered Financial Analyst)</li>
+                        <li>B.Com Banking &amp; Insurance</li>
+                        <li>BBA International Business</li>
+                        <li>Bachelor of Economics</li>
+                        <li>Integrated MBA (IPM / IIM Indore)</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Career Outcomes</h3>
+                    <ul>
+                        <li>Chartered Accountant (CA)</li>
+                        <li>Company Secretary (CS)</li>
+                        <li>Investment Banker / Stock Analyst</li>
+                        <li>Banking &amp; Insurance Professional</li>
+                        <li>Tax Consultant / Auditor</li>
+                        <li>Financial Analyst</li>
+                        <li>Business Manager / Marketing Executive</li>
+                        <li>Entrepreneur / Family Business</li>
+                        <li>Govt Jobs (RBI, SEBI, Banking)</li>
+                        <li>MBA &amp; Higher Studies</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Arts Tab -->
+        <div id="arts" class="content">
+            <div class="page-header" style="background: linear-gradient(135deg, #9b59b6 0%, #7d3c98 100%);">
+                <h1>Arts &amp; Humanities - Creative Pursuits</h1>
+                <p>Explore society, culture, language, design, and creative expression</p>
+            </div>
+
+            <div class="pathway-section">
+                <h2>Career Pathway</h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-arts">10th SSLC</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-arts">11th-12th PUC (Arts)</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-arts">BA / BFA / BJMC / B.Des</div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-arts">Career</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Popular Courses</h3>
+                    <ul>
+                        <li>BA English / History / Economics</li>
+                        <li>BA Political Science / Sociology</li>
+                        <li>BA Psychology</li>
+                        <li>BA Public Administration</li>
+                        <li>BA Philosophy</li>
+                        <li>BA Journalism &amp; Mass Communication (BJMC)</li>
+                        <li>BFA (Bachelor of Fine Arts)</li>
+                        <li>B.Des (Fashion / Interior / Graphic Design)</li>
+                        <li>Bachelor of Performing Arts (Music / Dance / Theatre)</li>
+                        <li>BA Hotel Management / Tourism</li>
+                        <li>BA Film &amp; Animation</li>
+                        <li>BA Foreign Languages</li>
+                        <li>Integrated BA-LLB</li>
+                    </ul>
+                </div>
+
+                <div class="info-card">
+                    <h3>Career Outcomes</h3>
+                    <ul>
+                        <li>Civil Services (IAS / IPS / IFS)</li>
+                        <li>Journalist / News Anchor / Reporter</li>
+                        <li>Teacher / Professor / Researcher</li>
+                        <li>Psychologist / Counselor</li>
+                        <li>Content Writer / Editor / Author</li>
+                        <li>Designer (Fashion / Graphic / UI-UX)</li>
+                        <li>Filmmaker / Animator / Photographer</li>
+                        <li>Social Worker / NGO Professional</li>
+                        <li>Public Policy Analyst</li>
+                        <li>Translator / Foreign Service</li>
+                        <li>Hotel &amp; Tourism Manager</li>
+                        <li>Higher Studies (MA / MBA / MPhil / PhD)</li>
                     </ul>
                 </div>
             </div>
