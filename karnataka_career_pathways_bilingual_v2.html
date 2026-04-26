@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karnataka Career Pathways 2025-26</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        body.lang-kn { font-family: 'Noto Sans Kannada', 'Segoe UI', sans-serif; }
+
+        /* ── Language Bar ── */
+        .lang-bar {
+            display: flex;
+            justify-content: flex-end;
+            max-width: 1200px;
+            margin: 0 auto 10px auto;
+        }
+        .lang-toggle {
+            display: flex;
+            background: rgba(255,255,255,0.18);
+            border-radius: 30px;
+            padding: 4px;
+            gap: 4px;
+            backdrop-filter: blur(6px);
+        }
+        .lang-btn {
+            padding: 8px 22px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            color: rgba(255,255,255,0.85);
+            background: transparent;
+            letter-spacing: 0.4px;
+        }
+        .lang-btn.active {
+            background: white;
+            color: #764ba2;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        /* ── Container ── */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        /* ── Header ── */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .header h1 { font-size: 36px; margin-bottom: 10px; font-weight: 700; }
+        .header p  { font-size: 16px; opacity: 0.95; }
+
+        /* ── Navigation ── */
+        .navigation {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px 40px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e0e0e0;
+            justify-content: center;
+        }
+        .nav-btn {
+            padding: 10px 18px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        .nav-btn:hover { border-color: #667eea; color: #667eea; transform: translateY(-2px); }
+        .nav-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* ── Content ── */
+        .content { padding: 40px; display: none; }
+        .content.active { display: block; animation: fadeIn 0.3s ease; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Overview ── */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        .overview-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .overview-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.2);
+        }
+        .overview-card .icon { font-size: 40px; margin-bottom: 10px; }
+        .overview-card h3 { font-size: 14px; margin-bottom: 5px; color: #333; }
+        .overview-card p  { font-size: 12px; color: #999; }
+
+        /* ── Pathway ── */
+        .pathway-section h2 {
+            color: #667eea;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .pathway-timeline {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        .timeline-step {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 13px;
+            flex: 0 0 auto;
+        }
+        .timeline-arrow { color: #667eea; font-size: 20px; font-weight: bold; }
+
+        /* ── Info Grid ── */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .info-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        .info-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 20px rgba(102,126,234,0.1);
+        }
+        .info-card h3 { color: #667eea; font-size: 16px; margin-bottom: 15px; font-weight: 700; }
+        .info-card ul { list-style: none; padding: 0; }
+        .info-card li {
+            padding: 8px 0;
+            color: #555;
+            font-size: 13px;
+            line-height: 1.6;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .info-card li:last-child { border-bottom: none; }
+        .info-card li:before { content: "✓ "; color: #667eea; font-weight: bold; margin-right: 8px; }
+
+        /* ── Page Header ── */
+        .page-header {
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        .page-header h1 { font-size: 24px; margin-bottom: 5px; }
+        .page-header p  { font-size: 13px; opacity: 0.95; }
+
+        /* ── Footer ── */
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 40px;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        /* ── Color Accents ── */
+        .color-engineering { border-left-color: #3366cc; }
+        .color-medicine    { border-left-color: #00aa66; }
+        .color-law         { border-left-color: #ff6b6b; }
+        .color-govtexams   { border-left-color: #ffa500; }
+        .color-iti         { border-left-color: #666; }
+        .color-emerging    { border-left-color: #ee66aa; }
+        .color-diploma     { border-left-color: #008b8b; }
+        .color-commerce    { border-left-color: #d97706; }
+        .color-arts        { border-left-color: #9b59b6; }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 24px; }
+            .navigation { flex-direction: column; align-items: center; }
+            .nav-btn { width: 100%; }
+            .info-grid { grid-template-columns: 1fr; }
+            .pathway-timeline { flex-direction: column; align-items: flex-start; }
+            .timeline-arrow { display: none; }
+            .content { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Language Toggle -->
+    <div class="lang-bar">
+        <div class="lang-toggle">
+            <button class="lang-btn active" id="btn-en" onclick="setLang('en')">🇮🇳 English</button>
+            <button class="lang-btn"        id="btn-kn" onclick="setLang('kn')">🇮🇳 ಕನ್ನಡ</button>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+            <h1>🎓 <span t="header_title"></span></h1>
+            <p><span t="header_sub"></span></p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation">
+            <button class="nav-btn active" onclick="showTab('overview',this)">📋 <span t="nav_overview"></span></button>
+            <button class="nav-btn"        onclick="showTab('engineering',this)">⚙️ <span t="nav_engineering"></span></button>
+            <button class="nav-btn"        onclick="showTab('medicine',this)">⚕️ <span t="nav_medicine"></span></button>
+            <button class="nav-btn"        onclick="showTab('law',this)">⚖️ <span t="nav_law"></span></button>
+            <button class="nav-btn"        onclick="showTab('commerce',this)">💼 <span t="nav_commerce"></span></button>
+            <button class="nav-btn"        onclick="showTab('arts',this)">🎨 <span t="nav_arts"></span></button>
+            <button class="nav-btn"        onclick="showTab('govtexams',this)">🏛️ <span t="nav_civil"></span></button>
+            <button class="nav-btn"        onclick="showTab('diploma',this)">🎓 <span t="nav_diploma"></span></button>
+            <button class="nav-btn"        onclick="showTab('iti',this)">🔧 <span t="nav_iti"></span></button>
+            <button class="nav-btn"        onclick="showTab('emerging',this)">🚀 <span t="nav_emerging"></span></button>
+        </div>
+
+        <!-- ══════════════════════════════════════
+             OVERVIEW
+        ══════════════════════════════════════ -->
+        <div id="overview" class="content active">
+            <div class="overview-grid">
+                <div class="overview-card" onclick="showTabFromCard('engineering')">
+                    <div class="icon">⚙️</div>
+                    <h3><span t="nav_engineering"></span></h3>
+                    <p><span t="ov_eng_sub"></span></p>
+                </div>
+                <div class="overview-card" onclick="showTabFromCard('medicine')">
+                    <div class="icon">⚕️</div>
+                    <h3><span t="nav_medicine"></span></h3>
+                    <p><span t="ov_med_sub"></span></p>
+                </div>
+                <div class="overview-card" onclick="showTabFromCard('law')">
+                    <div class="icon">⚖️</div>
+                    <h3><span t="nav_law"></span></h3>
+                    <p><span t="ov_law_sub"></span></p>
+                </div>
+                <div class="overview-card" onclick="showTabFromCard('commerce')">
+                    <div class="icon">💼</div>
+                    <h3><span t="nav_commerce"></span></h3>
+                    <p><span t="ov_commerce_sub"></span></p>
+                </div>
+                <div class="overview-card" onclick="showTabFromCard('arts')">
+                    <div class="icon">🎨</div>
+                    <h3><span t="ov_arts_h"></span></h3>
+                    <p><span t="ov_arts_sub"></span></p>
+                </div>
+                <div class="overview-card" onclick="showTabFromCard('govtexams')">
+                    <div class="icon">🏛️</div>
+                    <h3><span t="nav_civil"></span></h3>
+                    <p><span t="ov_civil_sub"></span></p>
+                </div>
+                <div class="overview-card" onclick="showTabFromCard('diploma')">
+                    <div class="icon">🎓</div>
+                    <h3><span t="nav_diploma"></span></h3>
+                    <p><span t="ov_diploma_sub"></span></p>
+                </div>
+                <div class="overview-card" onclick="showTabFromCard('iti')">
+                    <div class="icon">🔧</div>
+                    <h3><span t="ov_iti_h"></span></h3>
+                    <p><span t="ov_iti_sub"></span></p>
+                </div>
+                <div class="overview-card" onclick="showTabFromCard('emerging')">
+                    <div class="icon">🚀</div>
+                    <h3><span t="ov_em_h"></span></h3>
+                    <p><span t="ov_em_sub"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════
+             ENGINEERING
+        ══════════════════════════════════════ -->
+        <div id="engineering" class="content">
+            <div class="page-header color-engineering" style="background: linear-gradient(135deg,#3366cc 0%,#1a4ab0 100%);">
+                <h1><span t="eng_title"></span></h1>
+                <p><span t="eng_sub"></span></p>
+            </div>
+            <div class="pathway-section">
+                <h2><span t="pathway_label"></span></h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-engineering"><span t="step_10th"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-engineering"><span t="step_puc"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-engineering"><span t="eng_degree"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-engineering"><span t="career"></span></div>
+                </div>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><span t="popular_courses"></span></h3>
+                    <ul>
+                        <li><span t="eng_c1"></span></li><li><span t="eng_c2"></span></li>
+                        <li><span t="eng_c3"></span></li><li><span t="eng_c4"></span></li>
+                        <li><span t="eng_c5"></span></li><li><span t="eng_c6"></span></li>
+                        <li><span t="eng_c7"></span></li><li><span t="eng_c8"></span></li>
+                        <li><span t="eng_c9"></span></li><li><span t="eng_c10"></span></li>
+                        <li><span t="eng_c11"></span></li><li><span t="eng_c12"></span></li>
+                        <li><span t="eng_c13"></span></li><li><span t="eng_c14"></span></li>
+                        <li><span t="eng_c15"></span></li><li><span t="eng_c16"></span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><span t="entrance_exams"></span></h3>
+                    <ul>
+                        <li><span t="eng_e1"></span></li><li><span t="eng_e2"></span></li>
+                        <li><span t="eng_e3"></span></li><li><span t="eng_e4"></span></li>
+                        <li><span t="eng_e5"></span></li><li><span t="eng_e6"></span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><span t="career_outcomes"></span></h3>
+                    <ul>
+                        <li><span t="eng_o1"></span></li><li><span t="eng_o2"></span></li>
+                        <li><span t="eng_o3"></span></li><li><span t="eng_o4"></span></li>
+                        <li><span t="eng_o5"></span></li><li><span t="eng_o6"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════
+             MEDICINE
+        ══════════════════════════════════════ -->
+        <div id="medicine" class="content">
+            <div class="page-header" style="background: linear-gradient(135deg,#00aa66 0%,#009955 100%);">
+                <h1><span t="med_title"></span></h1>
+                <p><span t="med_sub"></span></p>
+            </div>
+            <div class="pathway-section">
+                <h2><span t="pathway_label"></span></h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-medicine"><span t="step_10th"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-medicine"><span t="step_puc"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-medicine"><span t="med_degree"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-medicine"><span t="career"></span></div>
+                </div>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><span t="popular_courses"></span></h3>
+                    <ul>
+                        <li><span t="med_c1"></span></li><li><span t="med_c2"></span></li>
+                        <li><span t="med_c3"></span></li><li><span t="med_c4"></span></li>
+                        <li><span t="med_c5"></span></li><li><span t="med_c6"></span></li>
+                        <li><span t="med_c7"></span></li><li><span t="med_c8"></span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><span t="entrance_exams"></span></h3>
+                    <ul>
+                        <li><span t="med_e1"></span></li><li><span t="med_e2"></span></li>
+                        <li><span t="med_e3"></span></li><li><span t="med_e4"></span></li>
+                        <li><span t="med_e5"></span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><span t="career_outcomes"></span></h3>
+                    <ul>
+                        <li><span t="med_o1"></span></li><li><span t="med_o2"></span></li>
+                        <li><span t="med_o3"></span></li><li><span t="med_o4"></span></li>
+                        <li><span t="med_o5"></span></li><li><span t="med_o6"></span></li>
+                        <li><span t="med_o7"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════
+             LAW
+        ══════════════════════════════════════ -->
+        <div id="law" class="content">
+            <div class="page-header" style="background: linear-gradient(135deg,#ff6b6b 0%,#ff4444 100%);">
+                <h1><span t="law_title"></span></h1>
+                <p><span t="law_sub"></span></p>
+            </div>
+            <div class="pathway-section">
+                <h2><span t="pathway_label"></span></h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-law"><span t="step_10th"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-law"><span t="step_puc"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-law"><span t="law_degree"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-law"><span t="career"></span></div>
+                </div>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><span t="popular_courses"></span></h3>
+                    <ul>
+                        <li><span t="law_c1"></span></li><li><span t="law_c2"></span></li>
+                        <li><span t="law_c3"></span></li><li><span t="law_c4"></span></li>
+                        <li><span t="law_c5"></span></li><li><span t="law_c6"></span></li>
+                        <li><span t="law_c7"></span></li><li><span t="law_c8"></span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><span t="entrance_exams"></span></h3>
+                    <ul>
+                        <li><span t="law_e1"></span></li><li><span t="law_e2"></span></li>
+                        <li><span t="law_e3"></span></li><li><span t="law_e4"></span></li>
+                        <li><span t="law_e5"></span></li><li><span t="law_e6"></span></li>
+                        <li><span t="law_e7"></span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><span t="career_outcomes"></span></h3>
+                    <ul>
+                        <li><span t="law_o1"></span></li><li><span t="law_o2"></span></li>
+                        <li><span t="law_o3"></span></li><li><span t="law_o4"></span></li>
+                        <li><span t="law_o5"></span></li><li><span t="law_o6"></span></li>
+                        <li><span t="law_o7"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════
+             COMMERCE
+        ══════════════════════════════════════ -->
+        <div id="commerce" class="content">
+            <div class="page-header" style="background: linear-gradient(135deg,#d97706 0%,#b45309 100%);">
+                <h1><span t="com_title"></span></h1>
+                <p><span t="com_sub"></span></p>
+            </div>
+            <div class="pathway-section">
+                <h2><span t="pathway_label"></span></h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-commerce"><span t="step_10th"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-commerce"><span t="com_puc_step"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-commerce"><span t="com_degree_step"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-commerce"><span t="career"></span></div>
+                </div>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><span t="popular_courses"></span></h3>
+                    <ul>
+                        <li><span t="com_c1"></span></li><li><span t="com_c2"></span></li>
+                        <li><span t="com_c3"></span></li><li><span t="com_c4"></span></li>
+                        <li><span t="com_c5"></span></li><li><span t="com_c6"></span></li>
+                        <li><span t="com_c7"></span></li><li><span t="com_c8"></span></li>
+                        <li><span t="com_c9"></span></li><li><span t="com_c10"></span></li>
+                        <li><span t="com_c11"></span></li><li><span t="com_c12"></span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><span t="career_outcomes"></span></h3>
+                    <ul>
+                        <li><span t="com_o1"></span></li><li><span t="com_o2"></span></li>
+                        <li><span t="com_o3"></span></li><li><span t="com_o4"></span></li>
+                        <li><span t="com_o5"></span></li><li><span t="com_o6"></span></li>
+                        <li><span t="com_o7"></span></li><li><span t="com_o8"></span></li>
+                        <li><span t="com_o9"></span></li><li><span t="com_o10"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════
+             ARTS & HUMANITIES
+        ══════════════════════════════════════ -->
+        <div id="arts" class="content">
+            <div class="page-header" style="background: linear-gradient(135deg,#9b59b6 0%,#7d3c98 100%);">
+                <h1><span t="arts_title"></span></h1>
+                <p><span t="arts_sub"></span></p>
+            </div>
+            <div class="pathway-section">
+                <h2><span t="pathway_label"></span></h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-arts"><span t="step_10th"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-arts"><span t="arts_puc_step"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-arts"><span t="arts_degree_step"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-arts"><span t="career"></span></div>
+                </div>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><span t="popular_courses"></span></h3>
+                    <ul>
+                        <li><span t="arts_c1"></span></li><li><span t="arts_c2"></span></li>
+                        <li><span t="arts_c3"></span></li><li><span t="arts_c4"></span></li>
+                        <li><span t="arts_c5"></span></li><li><span t="arts_c6"></span></li>
+                        <li><span t="arts_c7"></span></li><li><span t="arts_c8"></span></li>
+                        <li><span t="arts_c9"></span></li><li><span t="arts_c10"></span></li>
+                        <li><span t="arts_c11"></span></li><li><span t="arts_c12"></span></li>
+                        <li><span t="arts_c13"></span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><span t="career_outcomes"></span></h3>
+                    <ul>
+                        <li><span t="arts_o1"></span></li><li><span t="arts_o2"></span></li>
+                        <li><span t="arts_o3"></span></li><li><span t="arts_o4"></span></li>
+                        <li><span t="arts_o5"></span></li><li><span t="arts_o6"></span></li>
+                        <li><span t="arts_o7"></span></li><li><span t="arts_o8"></span></li>
+                        <li><span t="arts_o9"></span></li><li><span t="arts_o10"></span></li>
+                        <li><span t="arts_o11"></span></li><li><span t="arts_o12"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════
+             CIVIL SERVICES
+        ══════════════════════════════════════ -->
+        <div id="govtexams" class="content">
+            <div class="page-header" style="background: linear-gradient(135deg,#ffa500 0%,#ff8c00 100%);">
+                <h1><span t="gov_title"></span></h1>
+                <p><span t="gov_sub"></span></p>
+            </div>
+            <div class="pathway-section">
+                <h2><span t="pathway_label"></span></h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-govtexams"><span t="step_10th"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-govtexams"><span t="step_12th"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-govtexams"><span t="graduation"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-govtexams"><span t="gov_exams_step"></span></div>
+                </div>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><span t="prep_routes"></span></h3>
+                    <ul>
+                        <li><span t="gov_p1"></span></li><li><span t="gov_p2"></span></li>
+                        <li><span t="gov_p3"></span></li><li><span t="gov_p4"></span></li>
+                        <li><span t="gov_p5"></span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><span t="major_exams"></span></h3>
+                    <ul>
+                        <li><span t="gov_e1"></span></li><li><span t="gov_e2"></span></li>
+                        <li><span t="gov_e3"></span></li><li><span t="gov_e4"></span></li>
+                        <li><span t="gov_e5"></span></li><li><span t="gov_e6"></span></li>
+                        <li><span t="gov_e7"></span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><span t="career_outcomes"></span></h3>
+                    <ul>
+                        <li><span t="gov_o1"></span></li><li><span t="gov_o2"></span></li>
+                        <li><span t="gov_o3"></span></li><li><span t="gov_o4"></span></li>
+                        <li><span t="gov_o5"></span></li><li><span t="gov_o6"></span></li>
+                        <li><span t="gov_o7"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════
+             DIPLOMA
+        ══════════════════════════════════════ -->
+        <div id="diploma" class="content">
+            <div class="page-header" style="background: linear-gradient(135deg,#008b8b 0%,#006666 100%);">
+                <h1><span t="dip_title"></span></h1>
+                <p><span t="dip_sub"></span></p>
+            </div>
+            <div class="pathway-section">
+                <h2><span t="pathway_label"></span></h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-diploma"><span t="step_10th"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-diploma"><span t="dip_step"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-diploma"><span t="dip_job_step"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-diploma"><span t="career"></span></div>
+                </div>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><span t="dip_branches_h"></span></h3>
+                    <ul>
+                        <li><span t="dip_c1"></span></li><li><span t="dip_c2"></span></li>
+                        <li><span t="dip_c3"></span></li><li><span t="dip_c4"></span></li>
+                        <li><span t="dip_c5"></span></li><li><span t="dip_c6"></span></li>
+                        <li><span t="dip_c7"></span></li><li><span t="dip_c8"></span></li>
+                        <li><span t="dip_c9"></span></li><li><span t="dip_c10"></span></li>
+                        <li><span t="dip_c11"></span></li><li><span t="dip_c12"></span></li>
+                        <li><span t="dip_c13"></span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><span t="admission_process"></span></h3>
+                    <ul>
+                        <li><span t="dip_a1"></span></li><li><span t="dip_a2"></span></li>
+                        <li><span t="dip_a3"></span></li><li><span t="dip_a4"></span></li>
+                        <li><span t="dip_a5"></span></li><li><span t="dip_a6"></span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><span t="career_outcomes"></span></h3>
+                    <ul>
+                        <li><span t="dip_o1"></span></li><li><span t="dip_o2"></span></li>
+                        <li><span t="dip_o3"></span></li><li><span t="dip_o4"></span></li>
+                        <li><span t="dip_o5"></span></li><li><span t="dip_o6"></span></li>
+                        <li><span t="dip_o7"></span></li><li><span t="dip_o8"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════
+             ITI & POLYTECHNIC
+        ══════════════════════════════════════ -->
+        <div id="iti" class="content">
+            <div class="page-header" style="background: linear-gradient(135deg,#666 0%,#333 100%);">
+                <h1><span t="iti_title"></span></h1>
+                <p><span t="iti_sub"></span></p>
+            </div>
+            <div class="pathway-section">
+                <h2><span t="pathway_label"></span></h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-iti"><span t="step_10th"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-iti"><span t="iti_step"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-iti"><span t="diploma_cert"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-iti"><span t="career"></span></div>
+                </div>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><span t="popular_courses"></span></h3>
+                    <ul>
+                        <li><span t="iti_c1"></span></li><li><span t="iti_c2"></span></li>
+                        <li><span t="iti_c3"></span></li><li><span t="iti_c4"></span></li>
+                        <li><span t="iti_c5"></span></li><li><span t="iti_c6"></span></li>
+                        <li><span t="iti_c7"></span></li><li><span t="iti_c8"></span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><span t="admission_process"></span></h3>
+                    <ul>
+                        <li><span t="iti_a1"></span></li><li><span t="iti_a2"></span></li>
+                        <li><span t="iti_a3"></span></li><li><span t="iti_a4"></span></li>
+                        <li><span t="iti_a5"></span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><span t="career_outcomes"></span></h3>
+                    <ul>
+                        <li><span t="iti_o1"></span></li><li><span t="iti_o2"></span></li>
+                        <li><span t="iti_o3"></span></li><li><span t="iti_o4"></span></li>
+                        <li><span t="iti_o5"></span></li><li><span t="iti_o6"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════════════════════════════════════
+             EMERGING CAREERS
+        ══════════════════════════════════════ -->
+        <div id="emerging" class="content">
+            <div class="page-header" style="background: linear-gradient(135deg,#ee66aa 0%,#dd5599 100%);">
+                <h1><span t="em_title"></span></h1>
+                <p><span t="em_sub"></span></p>
+            </div>
+            <div class="pathway-section">
+                <h2><span t="pathway_label"></span></h2>
+                <div class="pathway-timeline">
+                    <div class="timeline-step color-emerging"><span t="step_10th"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-emerging"><span t="step_puc"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-emerging"><span t="spec_degree"></span></div>
+                    <div class="timeline-arrow">→</div>
+                    <div class="timeline-step color-emerging"><span t="future_career"></span></div>
+                </div>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><span t="em_courses_h"></span></h3>
+                    <ul>
+                        <li><span t="em_c1"></span></li><li><span t="em_c2"></span></li>
+                        <li><span t="em_c3"></span></li><li><span t="em_c4"></span></li>
+                        <li><span t="em_c5"></span></li><li><span t="em_c6"></span></li>
+                        <li><span t="em_c7"></span></li><li><span t="em_c8"></span></li>
+                        <li><span t="em_c9"></span></li><li><span t="em_c10"></span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><span t="pathways_h"></span></h3>
+                    <ul>
+                        <li><span t="em_p1"></span></li><li><span t="em_p2"></span></li>
+                        <li><span t="em_p3"></span></li><li><span t="em_p4"></span></li>
+                        <li><span t="em_p5"></span></li><li><span t="em_p6"></span></li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><span t="future_outcomes_h"></span></h3>
+                    <ul>
+                        <li><span t="em_o1"></span></li><li><span t="em_o2"></span></li>
+                        <li><span t="em_o3"></span></li><li><span t="em_o4"></span></li>
+                        <li><span t="em_o5"></span></li><li><span t="em_o6"></span></li>
+                        <li><span t="em_o7"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><span t="footer"></span></p>
+        </div>
+    </div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════
+//  TRANSLATION DICTIONARY  –  English & Kannada
+// ═══════════════════════════════════════════════════════════════
+const i18n = {
+  en: {
+    // ── Global header / nav
+    header_title: "Career Options Flowchart",
+    header_sub:   "After 10th (SSLC) & 12th (PUC) - Karnataka 2025-26",
+    nav_overview:    "Overview",
+    nav_engineering: "Engineering",
+    nav_medicine:    "Medicine",
+    nav_law:         "Law",
+    nav_commerce:    "Commerce",
+    nav_arts:        "Arts",
+    nav_civil:       "Civil Services",
+    nav_diploma:     "Diploma",
+    nav_iti:         "Technical",
+    nav_emerging:    "Emerging",
+
+    // ── Shared labels
+    pathway_label:    "Career Pathway",
+    popular_courses:  "Popular Courses",
+    entrance_exams:   "Entrance Exams",
+    career_outcomes:  "Career Outcomes",
+    prep_routes:      "Preparation Routes",
+    major_exams:      "Major Exams",
+    admission_process:"Admission Process",
+    pathways_h:       "Pathways",
+    em_courses_h:     "Emerging Courses",
+    future_outcomes_h:"Future Career Outcomes",
+    dip_branches_h:   "Engineering Branches",
+
+    // ── Shared steps
+    step_10th:    "10th SSLC",
+    step_puc:     "11th-12th PUC",
+    step_12th:    "12th PUC",
+    graduation:   "Graduation",
+    career:       "Career",
+    future_career:"Future Career",
+    spec_degree:  "Specialized Degree",
+    diploma_cert: "Diploma/Certificate",
+
+    // ── Overview subtitles
+    ov_eng_sub:     "Computer Science, Mechanical, Electronics",
+    ov_med_sub:     "MBBS, BDS, B.Pharm, Nursing",
+    ov_law_sub:     "BA LLB, BBA LLB, Corporate Law",
+    ov_commerce_sub:"B.Com, BBA, CA, CS, CMA",
+    ov_arts_h:      "Arts & Humanities",
+    ov_arts_sub:    "BA, Journalism, Psychology, Design",
+    ov_civil_sub:   "UPSC, KAS, KPSC, Banking",
+    ov_diploma_sub: "Engineering Diploma Branches",
+    ov_iti_h:       "ITI/Polytechnic",
+    ov_iti_sub:     "Technical Skills, Diplomas",
+    ov_em_h:        "Emerging Careers",
+    ov_em_sub:      "AI, Data Science, Cybersecurity",
+
+    // ── Engineering
+    eng_title:"Science A - Engineering",
+    eng_sub:  "Build tomorrow's technology and infrastructure",
+    eng_degree:"Engineering Degree",
+    eng_c1:"Computer Science & Engineering", eng_c2:"Electronics & Communication",
+    eng_c3:"Mechanical Engineering",          eng_c4:"Civil Engineering",
+    eng_c5:"Electrical Engineering",          eng_c6:"Robotics & Automation",
+    eng_c7:"Information Science & Engineering",eng_c8:"Artificial Intelligence & Machine Learning",
+    eng_c9:"Data Science",                    eng_c10:"Cyber Security",
+    eng_c11:"Chemical Engineering",           eng_c12:"Mechatronics Engineering",
+    eng_c13:"Aeronautical Engineering",       eng_c14:"Biotechnology Engineering",
+    eng_c15:"Biomedical Engineering",         eng_c16:"Instrumentation Engineering",
+    eng_e1:"JEE Main & Advanced (National)",  eng_e2:"KCET (Karnataka)",
+    eng_e3:"COMEDK (Private)",                eng_e4:"BITSAT",
+    eng_e5:"VITEEE",                          eng_e6:"SRMJEEE",
+    eng_o1:"Software Developer",              eng_o2:"Data Scientist",
+    eng_o3:"Electronics Engineer",            eng_o4:"Startup Founder",
+    eng_o5:"Higher Studies (M.Tech/MS)",      eng_o6:"PSUs & Govt Jobs",
+
+    // ── Medicine
+    med_title:"Science B - Medicine & Health",
+    med_sub:  "Pursue healthcare and medical excellence",
+    med_degree:"Medical Degree",
+    med_c1:"MBBS",                  med_c2:"BDS (Dentistry)",
+    med_c3:"BAMS (Ayurvedic)",      med_c4:"BHMS (Homeopathy)",
+    med_c5:"B.Pharm (Pharmacy)",    med_c6:"B.Sc Nursing",
+    med_c7:"Physiotherapy (BPT)",   med_c8:"Veterinary Science (BVSc)",
+    med_e1:"NEET-UG (National)",    med_e2:"KCET (Karnataka - Paramedical)",
+    med_e3:"AIIMS",                 med_e4:"JIPMER",
+    med_e5:"State Quota Counseling",
+    med_o1:"General Physician",     med_o2:"Surgeon",
+    med_o3:"Dentist",               med_o4:"Pharmacist",
+    med_o5:"Hospital Administrator",med_o6:"Medical Researcher",
+    med_o7:"Public Health Officer",
+
+    // ── Law
+    law_title:"Law - Legal Studies",
+    law_sub:  "Pursue justice and legal excellence",
+    law_degree:"Law Degree",
+    law_c1:"BA LLB (5 Year)",               law_c2:"BBA LLB (5 Year)",
+    law_c3:"B.Com LLB (5 Year)",            law_c4:"LLB (3 Year after graduation)",
+    law_c5:"LLM (Masters)",                 law_c6:"Corporate Law",
+    law_c7:"Criminal Law",                  law_c8:"Intellectual Property Law",
+    law_e1:"CLAT (National)",               law_e2:"LSAT India",
+    law_e3:"AILET",                         law_e4:"MH CET Law",
+    law_e5:"KCET Law (Karnataka)",          law_e6:"DU LLB",
+    law_e7:"BHU UET Law",
+    law_o1:"Lawyer/Advocate",              law_o2:"Corporate Legal Counsel",
+    law_o3:"Judge",                        law_o4:"Legal Consultant",
+    law_o5:"Public Prosecutor",            law_o6:"Patent Attorney",
+    law_o7:"Law Professor",
+
+    // ── Commerce
+    com_title:"Commerce - Business & Finance",
+    com_sub:  "Build a career in business, finance, accounting, and management",
+    com_puc_step:    "11th-12th PUC (Commerce)",
+    com_degree_step: "Degree / Professional Course",
+    com_c1:"B.Com (General / Honours)",         com_c2:"BBA (Bachelor of Business Administration)",
+    com_c3:"BBM (Bachelor of Business Management)", com_c4:"BBA Finance / Marketing / HR / Logistics",
+    com_c5:"CA (Chartered Accountancy)",        com_c6:"CS (Company Secretary)",
+    com_c7:"CMA (Cost & Management Accountancy)",com_c8:"CFA (Chartered Financial Analyst)",
+    com_c9:"B.Com Banking & Insurance",         com_c10:"BBA International Business",
+    com_c11:"Bachelor of Economics",            com_c12:"Integrated MBA (IPM / IIM Indore)",
+    com_o1:"Chartered Accountant (CA)",         com_o2:"Company Secretary (CS)",
+    com_o3:"Investment Banker / Stock Analyst", com_o4:"Banking & Insurance Professional",
+    com_o5:"Tax Consultant / Auditor",          com_o6:"Financial Analyst",
+    com_o7:"Business Manager / Marketing Executive", com_o8:"Entrepreneur / Family Business",
+    com_o9:"Govt Jobs (RBI, SEBI, Banking)",    com_o10:"MBA & Higher Studies",
+
+    // ── Arts
+    arts_title:"Arts & Humanities - Creative Pursuits",
+    arts_sub:  "Explore society, culture, language, design, and creative expression",
+    arts_puc_step:    "11th-12th PUC (Arts)",
+    arts_degree_step: "BA / BFA / BJMC / B.Des",
+    arts_c1:"BA English / History / Economics",         arts_c2:"BA Political Science / Sociology",
+    arts_c3:"BA Psychology",                            arts_c4:"BA Public Administration",
+    arts_c5:"BA Philosophy",                            arts_c6:"BA Journalism & Mass Communication (BJMC)",
+    arts_c7:"BFA (Bachelor of Fine Arts)",              arts_c8:"B.Des (Fashion / Interior / Graphic Design)",
+    arts_c9:"Bachelor of Performing Arts (Music / Dance / Theatre)",
+    arts_c10:"BA Hotel Management / Tourism",           arts_c11:"BA Film & Animation",
+    arts_c12:"BA Foreign Languages",                    arts_c13:"Integrated BA-LLB",
+    arts_o1:"Civil Services (IAS / IPS / IFS)",         arts_o2:"Journalist / News Anchor / Reporter",
+    arts_o3:"Teacher / Professor / Researcher",         arts_o4:"Psychologist / Counselor",
+    arts_o5:"Content Writer / Editor / Author",         arts_o6:"Designer (Fashion / Graphic / UI-UX)",
+    arts_o7:"Filmmaker / Animator / Photographer",      arts_o8:"Social Worker / NGO Professional",
+    arts_o9:"Public Policy Analyst",                    arts_o10:"Translator / Foreign Service",
+    arts_o11:"Hotel & Tourism Manager",                 arts_o12:"Higher Studies (MA / MBA / MPhil / PhD)",
+
+    // ── Civil Services
+    gov_title:"Government Exams - Civil Services",
+    gov_sub:  "Serve the nation through government positions",
+    gov_exams_step:"Govt Exams",
+    gov_p1:"Any Degree (Arts/Science/Commerce)", gov_p2:"BA Public Administration",
+    gov_p3:"BA Political Science",               gov_p4:"Self-Study + Coaching",
+    gov_p5:"UPSC/KAS Coaching Centers",
+    gov_e1:"UPSC (IAS/IPS/IFS)",                gov_e2:"KAS (Karnataka Administrative)",
+    gov_e3:"KPSC",                               gov_e4:"SSC CGL",
+    gov_e5:"Railway Recruitment Board",          gov_e6:"Banking (IBPS/SBI)",
+    gov_e7:"Defense (NDA/CDS)",
+    gov_o1:"IAS/IPS Officer",                   gov_o2:"KAS Officer (Tahsildar, DC)",
+    gov_o3:"Police Inspector/SI",               gov_o4:"Bank PO/Clerk",
+    gov_o5:"Defense Officer",                   gov_o6:"Revenue Inspector",
+    gov_o7:"Forest Officer",
+
+    // ── Diploma
+    dip_title:"Diploma - Engineering Branches",
+    dip_sub:  "Pursue a 3-year diploma after 10th SSLC across diverse engineering fields",
+    dip_step:    "Diploma (3 Years)",
+    dip_job_step:"Job / Lateral Entry to B.E.",
+    dip_c1:"Civil Engineering",                     dip_c2:"Mechanical Engineering",
+    dip_c3:"Electrical & Electronics Engineering",  dip_c4:"Electronics & Communication Engineering",
+    dip_c5:"Computer Science Engineering",          dip_c6:"Information Science",
+    dip_c7:"Automobile Engineering",                dip_c8:"Mechatronics Engineering",
+    dip_c9:"Robotics & Automation",                 dip_c10:"Artificial Intelligence & Machine Learning",
+    dip_c11:"Tool & Die Engineering",               dip_c12:"Instrumentation Technology",
+    dip_c13:"Chemical Engineering",
+    dip_a1:"Eligibility: 10th SSLC Pass",           dip_a2:"DCET (Diploma Common Entrance Test)",
+    dip_a3:"Karnataka Examinations Authority (KEA) Counseling",
+    dip_a4:"Government & Private Polytechnic Colleges",
+    dip_a5:"Merit-Based Direct Admission",          dip_a6:"Lateral Entry to 2nd Year B.E./B.Tech",
+    dip_o1:"Core Engineering Jobs (Site Engineer, Production, Maintenance)",
+    dip_o2:"IT & Software Careers (Developer, Tester, Support Engineer)",
+    dip_o3:"Government Jobs (PWD, Railways, BESCOM, KPTCL)",
+    dip_o4:"Diploma to Engineering (Lateral Entry to B.E/B.Tech)",
+    dip_o5:"Industrial & Manufacturing Careers (Factories, Automation, CNC)",
+    dip_o6:"Entrepreneurship (Contractor, Workshop, Service Center)",
+    dip_o7:"Specialized Technical Roles (Automation, Robotics, Tool & Die)",
+    dip_o8:"Overseas & Skilled Technician Opportunities",
+
+    // ── ITI
+    iti_title:"ITI & Polytechnic - Technical Skills",
+    iti_sub:  "Build hands-on technical expertise",
+    iti_step:"ITI/Polytechnic",
+    iti_c1:"ITI Electrician",       iti_c2:"ITI Fitter",
+    iti_c3:"ITI Mechanic",          iti_c4:"ITI Welder",
+    iti_c5:"ITI Electronics",       iti_c6:"Polytechnic Civil",
+    iti_c7:"Polytechnic Mechanical",iti_c8:"Polytechnic Computer Science",
+    iti_a1:"Direct Admission (Merit Based)",  iti_a2:"Govt ITI (Free/Subsidized)",
+    iti_a3:"DCET (Polytechnic Entrance)",     iti_a4:"Karnataka Diploma (KCET)",
+    iti_a5:"Placement assistance available",
+    iti_o1:"Skilled Technician",             iti_o2:"Factory Supervisor",
+    iti_o3:"Licensed Electrician",           iti_o4:"Railway Technical Staff",
+    iti_o5:"KSEB/BESCOM Technician",         iti_o6:"Lateral Entry to Engineering",
+
+    // ── Emerging
+    em_title:"Emerging Careers - Future Tech",
+    em_sub:  "Shape the future with cutting-edge technology",
+    em_c1:"AI & Machine Learning",  em_c2:"Data Science",
+    em_c3:"Cybersecurity",          em_c4:"Blockchain",
+    em_c5:"Game Design",            em_c6:"Digital Marketing",
+    em_c7:"UX/UI Design",           em_c8:"Cloud Computing",
+    em_c9:"Renewable Energy",       em_c10:"Biotechnology",
+    em_p1:"Engineering + Specialization",           em_p2:"B.Sc Computer Science",
+    em_p3:"BCA (Bachelor of Computer Applications)",em_p4:"B.Des (Design)",
+    em_p5:"Online Learning (Coursera/edX)",         em_p6:"Industry Internships",
+    em_o1:"AI/ML Engineer",        em_o2:"Data Scientist",
+    em_o3:"Cybersecurity Analyst", em_o4:"Game Developer",
+    em_o5:"Cloud Architect",       em_o6:"Robotics Engineer",
+    em_o7:"Environmental Consultant",
+
+    // ── Footer
+    footer:"Karnataka Career Pathways 2025-26 | Guide for Students | Explore, Plan & Succeed"
+  },
+
+  kn: {
+    // ── Global header / nav
+    header_title: "ವೃತ್ತಿ ಆಯ್ಕೆಗಳ ಹರಿವು ಚಾರ್ಟ್",
+    header_sub:   "10ನೇ (SSLC) ಮತ್ತು 12ನೇ (PUC) ನಂತರ - ಕರ್ನಾಟಕ 2025-26",
+    nav_overview:    "ಸಾರಾಂಶ",
+    nav_engineering: "ಎಂಜಿನಿಯರಿಂಗ್",
+    nav_medicine:    "ವೈದ್ಯಕೀಯ",
+    nav_law:         "ಕಾನೂನು",
+    nav_commerce:    "ವಾಣಿಜ್ಯ",
+    nav_arts:        "ಕಲೆ",
+    nav_civil:       "ನಾಗರಿಕ ಸೇವೆ",
+    nav_diploma:     "ಡಿಪ್ಲೋಮಾ",
+    nav_iti:         "ತಾಂತ್ರಿಕ",
+    nav_emerging:    "ಉದಯೋನ್ಮುಖ",
+
+    // ── Shared labels
+    pathway_label:    "ವೃತ್ತಿ ಮಾರ್ಗ",
+    popular_courses:  "ಜನಪ್ರಿಯ ಕೋರ್ಸ್‌ಗಳು",
+    entrance_exams:   "ಪ್ರವೇಶ ಪರೀಕ್ಷೆಗಳು",
+    career_outcomes:  "ವೃತ್ತಿ ಫಲಿತಾಂಶಗಳು",
+    prep_routes:      "ತಯಾರಿ ಮಾರ್ಗಗಳು",
+    major_exams:      "ಪ್ರಮುಖ ಪರೀಕ್ಷೆಗಳು",
+    admission_process:"ಪ್ರವೇಶ ಪ್ರಕ್ರಿಯೆ",
+    pathways_h:       "ಮಾರ್ಗಗಳು",
+    em_courses_h:     "ಉದಯೋನ್ಮುಖ ಕೋರ್ಸ್‌ಗಳು",
+    future_outcomes_h:"ಭವಿಷ್ಯದ ವೃತ್ತಿ ಫಲಿತಾಂಶಗಳು",
+    dip_branches_h:   "ಎಂಜಿನಿಯರಿಂಗ್ ಶಾಖೆಗಳು",
+
+    // ── Shared steps
+    step_10th:    "10ನೇ SSLC",
+    step_puc:     "11ನೇ-12ನೇ PUC",
+    step_12th:    "12ನೇ PUC",
+    graduation:   "ಪದವಿ",
+    career:       "ವೃತ್ತಿ",
+    future_career:"ಭವಿಷ್ಯದ ವೃತ್ತಿ",
+    spec_degree:  "ವಿಶೇಷ ಪದವಿ",
+    diploma_cert: "ಡಿಪ್ಲೋಮಾ/ಪ್ರಮಾಣಪತ್ರ",
+
+    // ── Overview subtitles
+    ov_eng_sub:     "ಕಂಪ್ಯೂಟರ್ ವಿಜ್ಞಾನ, ಮೆಕ್ಯಾನಿಕಲ್, ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್",
+    ov_med_sub:     "MBBS, BDS, B.Pharm, ನರ್ಸಿಂಗ್",
+    ov_law_sub:     "BA LLB, BBA LLB, ಕಾರ್ಪೊರೇಟ್ ಕಾನೂನು",
+    ov_commerce_sub:"B.Com, BBA, CA, CS, CMA",
+    ov_arts_h:      "ಕಲೆ ಮತ್ತು ಮಾನವಿಕ",
+    ov_arts_sub:    "BA, ಪತ್ರಿಕೋದ್ಯಮ, ಮನೋವಿಜ್ಞಾನ, ವಿನ್ಯಾಸ",
+    ov_civil_sub:   "UPSC, KAS, KPSC, ಬ್ಯಾಂಕಿಂಗ್",
+    ov_diploma_sub: "ಎಂಜಿನಿಯರಿಂಗ್ ಡಿಪ್ಲೋಮಾ ಶಾಖೆಗಳು",
+    ov_iti_h:       "ITI/ಪಾಲಿಟೆಕ್ನಿಕ್",
+    ov_iti_sub:     "ತಾಂತ್ರಿಕ ಕೌಶಲ್ಯ, ಡಿಪ್ಲೋಮಾ",
+    ov_em_h:        "ಉದಯೋನ್ಮುಖ ವೃತ್ತಿಗಳು",
+    ov_em_sub:      "AI, ಡೇಟಾ ಸೈನ್ಸ್, ಸೈಬರ್ ಸೆಕ್ಯೂರಿಟಿ",
+
+    // ── Engineering
+    eng_title:"ವಿಜ್ಞಾನ A - ಎಂಜಿನಿಯರಿಂಗ್",
+    eng_sub:  "ನಾಳೆಯ ತಂತ್ರಜ್ಞಾನ ಮತ್ತು ಮೂಲಸೌಕರ್ಯ ನಿರ್ಮಿಸಿ",
+    eng_degree:"ಎಂಜಿನಿಯರಿಂಗ್ ಪದವಿ",
+    eng_c1:"ಕಂಪ್ಯೂಟರ್ ವಿಜ್ಞಾನ ಮತ್ತು ಎಂಜಿನಿಯರಿಂಗ್", eng_c2:"ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್ ಮತ್ತು ಸಂವಹನ",
+    eng_c3:"ಮೆಕ್ಯಾನಿಕಲ್ ಎಂಜಿನಿಯರಿಂಗ್",             eng_c4:"ಸಿವಿಲ್ ಎಂಜಿನಿಯರಿಂಗ್",
+    eng_c5:"ಎಲೆಕ್ಟ್ರಿಕಲ್ ಎಂಜಿನಿಯರಿಂಗ್",             eng_c6:"ರೊಬೊಟಿಕ್ಸ್ ಮತ್ತು ಆಟೊಮೇಷನ್",
+    eng_c7:"ಮಾಹಿತಿ ವಿಜ್ಞಾನ ಮತ್ತು ಎಂಜಿನಿಯರಿಂಗ್",    eng_c8:"ಕೃತ್ರಿಮ ಬುದ್ಧಿಮತ್ತೆ ಮತ್ತು ಮೆಷಿನ್ ಲರ್ನಿಂಗ್",
+    eng_c9:"ಡೇಟಾ ಸೈನ್ಸ್",                          eng_c10:"ಸೈಬರ್ ಸೆಕ್ಯೂರಿಟಿ",
+    eng_c11:"ರಾಸಾಯನಿಕ ಎಂಜಿನಿಯರಿಂಗ್",               eng_c12:"ಮೆಕಾಟ್ರಾನಿಕ್ಸ್ ಎಂಜಿನಿಯರಿಂಗ್",
+    eng_c13:"ವಾಯುಯಾನ ಎಂಜಿನಿಯರಿಂಗ್",                eng_c14:"ಜೈವಿಕ ತಂತ್ರಜ್ಞಾನ ಎಂಜಿನಿಯರಿಂಗ್",
+    eng_c15:"ಜೈವ ವೈದ್ಯಕೀಯ ಎಂಜಿನಿಯರಿಂಗ್",           eng_c16:"ಮಾಪನ ಎಂಜಿನಿಯರಿಂಗ್",
+    eng_e1:"JEE Main ಮತ್ತು Advanced (ರಾಷ್ಟ್ರೀಯ)",  eng_e2:"KCET (ಕರ್ನಾಟಕ)",
+    eng_e3:"COMEDK (ಖಾಸಗಿ)",                        eng_e4:"BITSAT",
+    eng_e5:"VITEEE",                                 eng_e6:"SRMJEEE",
+    eng_o1:"ಸಾಫ್ಟ್‌ವೇರ್ ಡೆವಲಪರ್",                  eng_o2:"ಡೇಟಾ ಸೈಂಟಿಸ್ಟ್",
+    eng_o3:"ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್ ಎಂಜಿನಿಯರ್",              eng_o4:"ಸ್ಟಾರ್ಟಪ್ ಸ್ಥಾಪಕ",
+    eng_o5:"ಉನ್ನತ ಶಿಕ್ಷಣ (M.Tech/MS)",              eng_o6:"PSU ಮತ್ತು ಸರ್ಕಾರಿ ಉದ್ಯೋಗಗಳು",
+
+    // ── Medicine
+    med_title:"ವಿಜ್ಞಾನ B - ವೈದ್ಯಕೀಯ ಮತ್ತು ಆರೋಗ್ಯ",
+    med_sub:  "ಆರೋಗ್ಯ ರಕ್ಷಣೆ ಮತ್ತು ವೈದ್ಯಕೀಯ ಶ್ರೇಷ್ಠತೆ ಸಾಧಿಸಿ",
+    med_degree:"ವೈದ್ಯಕೀಯ ಪದವಿ",
+    med_c1:"MBBS",                     med_c2:"BDS (ದಂತ ಚಿಕಿತ್ಸೆ)",
+    med_c3:"BAMS (ಆಯುರ್ವೇದ)",         med_c4:"BHMS (ಹೋಮಿಯೋಪತಿ)",
+    med_c5:"B.Pharm (ಔಷಧಶಾಸ್ತ್ರ)",    med_c6:"B.Sc ನರ್ಸಿಂಗ್",
+    med_c7:"ಭೌತ ಚಿಕಿತ್ಸೆ (BPT)",      med_c8:"ಪಶುವೈದ್ಯ ವಿಜ್ಞಾನ (BVSc)",
+    med_e1:"NEET-UG (ರಾಷ್ಟ್ರೀಯ)",     med_e2:"KCET (ಕರ್ನಾಟಕ - ಪ್ಯಾರಾ ವೈದ್ಯಕೀಯ)",
+    med_e3:"AIIMS",                    med_e4:"JIPMER",
+    med_e5:"ರಾಜ್ಯ ಕೋಟಾ ಕೌನ್ಸೆಲಿಂಗ್",
+    med_o1:"ಸಾಮಾನ್ಯ ವೈದ್ಯ",            med_o2:"ಶಸ್ತ್ರಚಿಕಿತ್ಸಕ",
+    med_o3:"ದಂತವೈದ್ಯ",                med_o4:"ಔಷಧಿಕಾರ",
+    med_o5:"ಆಸ್ಪತ್ರೆ ನಿರ್ವಾಹಕ",        med_o6:"ವೈದ್ಯಕೀಯ ಸಂಶೋಧಕ",
+    med_o7:"ಸಾರ್ವಜನಿಕ ಆರೋಗ್ಯ ಅಧಿಕಾರಿ",
+
+    // ── Law
+    law_title:"ಕಾನೂನು - ಕಾನೂನು ಅಧ್ಯಯನ",
+    law_sub:  "ನ್ಯಾಯ ಮತ್ತು ಕಾನೂನು ಶ್ರೇಷ್ಠತೆ ಸಾಧಿಸಿ",
+    law_degree:"ಕಾನೂನು ಪದವಿ",
+    law_c1:"BA LLB (5 ವರ್ಷ)",              law_c2:"BBA LLB (5 ವರ್ಷ)",
+    law_c3:"B.Com LLB (5 ವರ್ಷ)",          law_c4:"LLB (ಪದವಿ ನಂತರ 3 ವರ್ಷ)",
+    law_c5:"LLM (ಸ್ನಾತಕೋತ್ತರ)",           law_c6:"ಕಾರ್ಪೊರೇಟ್ ಕಾನೂನು",
+    law_c7:"ಕ್ರಿಮಿನಲ್ ಕಾನೂನು",            law_c8:"ಬೌದ್ಧಿಕ ಆಸ್ತಿ ಕಾನೂನು",
+    law_e1:"CLAT (ರಾಷ್ಟ್ರೀಯ)",            law_e2:"LSAT ಇಂಡಿಯಾ",
+    law_e3:"AILET",                        law_e4:"MH CET Law",
+    law_e5:"KCET Law (ಕರ್ನಾಟಕ)",          law_e6:"DU LLB",
+    law_e7:"BHU UET Law",
+    law_o1:"ವಕೀಲ/ಅಭಿಭಾಷಕ",               law_o2:"ಕಾರ್ಪೊರೇಟ್ ಕಾನೂನು ಸಲಹೆಗಾರ",
+    law_o3:"ನ್ಯಾಯಾಧೀಶ",                   law_o4:"ಕಾನೂನು ಸಲಹೆಗಾರ",
+    law_o5:"ಸರ್ಕಾರಿ ಅಭಿಯೋಜಕ",             law_o6:"ಪೇಟೆಂಟ್ ವಕೀಲ",
+    law_o7:"ಕಾನೂನು ಪ್ರಾಧ್ಯಾಪಕ",
+
+    // ── Commerce
+    com_title:"ವಾಣಿಜ್ಯ - ವ್ಯಾಪಾರ ಮತ್ತು ಹಣಕಾಸು",
+    com_sub:  "ವ್ಯಾಪಾರ, ಹಣಕಾಸು, ಲೆಕ್ಕಪತ್ರ ಮತ್ತು ನಿರ್ವಹಣೆಯಲ್ಲಿ ವೃತ್ತಿ ರೂಪಿಸಿ",
+    com_puc_step:    "11ನೇ-12ನೇ PUC (ವಾಣಿಜ್ಯ)",
+    com_degree_step: "ಪದವಿ / ವೃತ್ತಿಪರ ಕೋರ್ಸ್",
+    com_c1:"B.Com (ಸಾಮಾನ್ಯ / ಗೌರವ)",              com_c2:"BBA (ವ್ಯಾಪಾರ ಆಡಳಿತ ಸ್ನಾತಕ)",
+    com_c3:"BBM (ವ್ಯಾಪಾರ ನಿರ್ವಹಣೆ ಸ್ನಾತಕ)",        com_c4:"BBA ಹಣಕಾಸು / ಮಾರ್ಕೆಟಿಂಗ್ / HR / ಲಾಜಿಸ್ಟಿಕ್ಸ್",
+    com_c5:"CA (ಚಾರ್ಟರ್ಡ್ ಅಕೌಂಟೆನ್ಸಿ)",            com_c6:"CS (ಕಂಪನಿ ಕಾರ್ಯದರ್ಶಿ)",
+    com_c7:"CMA (ವೆಚ್ಚ ಮತ್ತು ನಿರ್ವಹಣಾ ಲೆಕ್ಕಪತ್ರ)", com_c8:"CFA (ಚಾರ್ಟರ್ಡ್ ಹಣಕಾಸು ವಿಶ್ಲೇಷಕ)",
+    com_c9:"B.Com ಬ್ಯಾಂಕಿಂಗ್ ಮತ್ತು ವಿಮೆ",          com_c10:"BBA ಅಂತರರಾಷ್ಟ್ರೀಯ ವ್ಯಾಪಾರ",
+    com_c11:"ಅರ್ಥಶಾಸ್ತ್ರ ಸ್ನಾತಕ",                  com_c12:"ಸಮಗ್ರ MBA (IPM / IIM ಇಂದೋರ್)",
+    com_o1:"ಚಾರ್ಟರ್ಡ್ ಅಕೌಂಟೆಂಟ್ (CA)",             com_o2:"ಕಂಪನಿ ಕಾರ್ಯದರ್ಶಿ (CS)",
+    com_o3:"ಹೂಡಿಕೆ ಬ್ಯಾಂಕರ್ / ಷೇರು ವಿಶ್ಲೇಷಕ",       com_o4:"ಬ್ಯಾಂಕಿಂಗ್ ಮತ್ತು ವಿಮಾ ವೃತ್ತಿಪರ",
+    com_o5:"ತೆರಿಗೆ ಸಲಹೆಗಾರ / ಲೆಕ್ಕಪರಿಶೋಧಕ",         com_o6:"ಹಣಕಾಸು ವಿಶ್ಲೇಷಕ",
+    com_o7:"ವ್ಯಾಪಾರ ವ್ಯವಸ್ಥಾಪಕ / ಮಾರ್ಕೆಟಿಂಗ್ ಕಾರ್ಯನಿರ್ವಾಹಕ", com_o8:"ಉದ್ಯಮಿ / ಕುಟುಂಬ ವ್ಯಾಪಾರ",
+    com_o9:"ಸರ್ಕಾರಿ ಉದ್ಯೋಗ (RBI, SEBI, ಬ್ಯಾಂಕಿಂಗ್)",com_o10:"MBA ಮತ್ತು ಉನ್ನತ ಶಿಕ್ಷಣ",
+
+    // ── Arts
+    arts_title:"ಕಲೆ ಮತ್ತು ಮಾನವಿಕ - ಸೃಜನಶೀಲ ಅನ್ವೇಷಣೆ",
+    arts_sub:  "ಸಮಾಜ, ಸಂಸ್ಕೃತಿ, ಭಾಷೆ, ವಿನ್ಯಾಸ ಮತ್ತು ಸೃಜನಶೀಲ ಅಭಿವ್ಯಕ್ತಿ ಅನ್ವೇಷಿಸಿ",
+    arts_puc_step:    "11ನೇ-12ನೇ PUC (ಕಲೆ)",
+    arts_degree_step: "BA / BFA / BJMC / B.Des",
+    arts_c1:"BA ಇಂಗ್ಲಿಷ್ / ಇತಿಹಾಸ / ಅರ್ಥಶಾಸ್ತ್ರ",         arts_c2:"BA ರಾಜ್ಯಶಾಸ್ತ್ರ / ಸಮಾಜಶಾಸ್ತ್ರ",
+    arts_c3:"BA ಮನೋವಿಜ್ಞಾನ",                               arts_c4:"BA ಸಾರ್ವಜನಿಕ ಆಡಳಿತ",
+    arts_c5:"BA ತತ್ವಶಾಸ್ತ್ರ",                               arts_c6:"BA ಪತ್ರಿಕೋದ್ಯಮ ಮತ್ತು ಸಮೂಹ ಸಂವಹನ (BJMC)",
+    arts_c7:"BFA (ಲಲಿತ ಕಲೆಗಳ ಸ್ನಾತಕ)",                    arts_c8:"B.Des (ಫ್ಯಾಷನ್ / ಒಳಾಂಗಣ / ಗ್ರಾಫಿಕ್ ವಿನ್ಯಾಸ)",
+    arts_c9:"ಪ್ರದರ್ಶನ ಕಲೆಗಳ ಸ್ನಾತಕ (ಸಂಗೀತ / ನೃತ್ಯ / ರಂಗಭೂಮಿ)",
+    arts_c10:"BA ಹೋಟೆಲ್ ನಿರ್ವಹಣೆ / ಪ್ರವಾಸೋದ್ಯಮ",          arts_c11:"BA ಚಲನಚಿತ್ರ ಮತ್ತು ಅನಿಮೇಷನ್",
+    arts_c12:"BA ವಿದೇಶಿ ಭಾಷೆಗಳು",                          arts_c13:"ಸಮಗ್ರ BA-LLB",
+    arts_o1:"ನಾಗರಿಕ ಸೇವೆ (IAS / IPS / IFS)",               arts_o2:"ಪತ್ರಕರ್ತ / ಸುದ್ದಿ ನಿರೂಪಕ / ವರದಿಗಾರ",
+    arts_o3:"ಶಿಕ್ಷಕ / ಪ್ರಾಧ್ಯಾಪಕ / ಸಂಶೋಧಕ",                arts_o4:"ಮನಶ್ಶಾಸ್ತ್ರಜ್ಞ / ಸಲಹೆಗಾರ",
+    arts_o5:"ವಿಷಯ ಬರಹಗಾರ / ಸಂಪಾದಕ / ಲೇಖಕ",                arts_o6:"ವಿನ್ಯಾಸಕ (ಫ್ಯಾಷನ್ / ಗ್ರಾಫಿಕ್ / UI-UX)",
+    arts_o7:"ಚಲನಚಿತ್ರ ನಿರ್ಮಾಪಕ / ಅನಿಮೇಟರ್ / ಛಾಯಾಗ್ರಾಹಕ",   arts_o8:"ಸಮಾಜ ಸೇವಕ / NGO ವೃತ್ತಿಪರ",
+    arts_o9:"ಸಾರ್ವಜನಿಕ ನೀತಿ ವಿಶ್ಲೇಷಕ",                    arts_o10:"ಅನುವಾದಕ / ವಿದೇಶ ಸೇವೆ",
+    arts_o11:"ಹೋಟೆಲ್ ಮತ್ತು ಪ್ರವಾಸೋದ್ಯಮ ವ್ಯವಸ್ಥಾಪಕ",        arts_o12:"ಉನ್ನತ ಶಿಕ್ಷಣ (MA / MBA / MPhil / PhD)",
+
+    // ── Civil Services
+    gov_title:"ಸರ್ಕಾರಿ ಪರೀಕ್ಷೆಗಳು - ನಾಗರಿಕ ಸೇವೆಗಳು",
+    gov_sub:  "ಸರ್ಕಾರಿ ಹುದ್ದೆಗಳ ಮೂಲಕ ರಾಷ್ಟ್ರ ಸೇವೆ ಮಾಡಿ",
+    gov_exams_step:"ಸರ್ಕಾರಿ ಪರೀಕ್ಷೆಗಳು",
+    gov_p1:"ಯಾವುದೇ ಪದವಿ (ಕಲೆ/ವಿಜ್ಞಾನ/ವಾಣಿಜ್ಯ)", gov_p2:"BA ಸಾರ್ವಜನಿಕ ಆಡಳಿತ",
+    gov_p3:"BA ರಾಜ್ಯಶಾಸ್ತ್ರ",                   gov_p4:"ಸ್ವಯಂ ಅಧ್ಯಯನ + ತರಬೇತಿ",
+    gov_p5:"UPSC/KAS ತರಬೇತಿ ಕೇಂದ್ರಗಳು",
+    gov_e1:"UPSC (IAS/IPS/IFS)",                gov_e2:"KAS (ಕರ್ನಾಟಕ ಆಡಳಿತ ಸೇವೆ)",
+    gov_e3:"KPSC",                              gov_e4:"SSC CGL",
+    gov_e5:"ರೈಲ್ವೆ ನೇಮಕಾತಿ ಮಂಡಳಿ",              gov_e6:"ಬ್ಯಾಂಕಿಂಗ್ (IBPS/SBI)",
+    gov_e7:"ರಕ್ಷಣಾ (NDA/CDS)",
+    gov_o1:"IAS/IPS ಅಧಿಕಾರಿ",                  gov_o2:"KAS ಅಧಿಕಾರಿ (ತಹಸೀಲ್ದಾರ್, DC)",
+    gov_o3:"ಪೊಲೀಸ್ ನಿರೀಕ್ಷಕ/SI",               gov_o4:"ಬ್ಯಾಂಕ್ PO/ಗುಮಾಸ್ತ",
+    gov_o5:"ರಕ್ಷಣಾ ಅಧಿಕಾರಿ",                   gov_o6:"ರಾಜಸ್ವ ನಿರೀಕ್ಷಕ",
+    gov_o7:"ಅರಣ್ಯ ಅಧಿಕಾರಿ",
+
+    // ── Diploma
+    dip_title:"ಡಿಪ್ಲೋಮಾ - ಎಂಜಿನಿಯರಿಂಗ್ ಶಾಖೆಗಳು",
+    dip_sub:  "10ನೇ SSLC ನಂತರ ವೈವಿಧ್ಯಮಯ ಎಂಜಿನಿಯರಿಂಗ್ ಕ್ಷೇತ್ರಗಳಲ್ಲಿ 3 ವರ್ಷದ ಡಿಪ್ಲೋಮಾ ಮಾಡಿ",
+    dip_step:    "ಡಿಪ್ಲೋಮಾ (3 ವರ್ಷ)",
+    dip_job_step:"ಉದ್ಯೋಗ / B.E.ಗೆ ಲ್ಯಾಟರಲ್ ಎಂಟ್ರಿ",
+    dip_c1:"ಸಿವಿಲ್ ಎಂಜಿನಿಯರಿಂಗ್",                         dip_c2:"ಮೆಕ್ಯಾನಿಕಲ್ ಎಂಜಿನಿಯರಿಂಗ್",
+    dip_c3:"ವಿದ್ಯುತ್ ಮತ್ತು ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್ ಎಂಜಿನಿಯರಿಂಗ್",   dip_c4:"ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್ ಮತ್ತು ಸಂವಹನ ಎಂಜಿನಿಯರಿಂಗ್",
+    dip_c5:"ಕಂಪ್ಯೂಟರ್ ವಿಜ್ಞಾನ ಎಂಜಿನಿಯರಿಂಗ್",               dip_c6:"ಮಾಹಿತಿ ವಿಜ್ಞಾನ",
+    dip_c7:"ಆಟೋಮೊಬೈಲ್ ಎಂಜಿನಿಯರಿಂಗ್",                     dip_c8:"ಮೆಕಾಟ್ರಾನಿಕ್ಸ್ ಎಂಜಿನಿಯರಿಂಗ್",
+    dip_c9:"ರೊಬೊಟಿಕ್ಸ್ ಮತ್ತು ಆಟೊಮೇಷನ್",                   dip_c10:"ಕೃತ್ರಿಮ ಬುದ್ಧಿಮತ್ತೆ ಮತ್ತು ಮೆಷಿನ್ ಲರ್ನಿಂಗ್",
+    dip_c11:"ಟೂಲ್ ಮತ್ತು ಡೈ ಎಂಜಿನಿಯರಿಂಗ್",                 dip_c12:"ಇನ್ಸ್ಟ್ರುಮೆಂಟೇಷನ್ ತಂತ್ರಜ್ಞಾನ",
+    dip_c13:"ರಾಸಾಯನಿಕ ಎಂಜಿನಿಯರಿಂಗ್",
+    dip_a1:"ಅರ್ಹತೆ: 10ನೇ SSLC ಪಾಸ್",                      dip_a2:"DCET (ಡಿಪ್ಲೋಮಾ ಸಾಮಾನ್ಯ ಪ್ರವೇಶ ಪರೀಕ್ಷೆ)",
+    dip_a3:"ಕರ್ನಾಟಕ ಪರೀಕ್ಷಾ ಪ್ರಾಧಿಕಾರ (KEA) ಕೌನ್ಸೆಲಿಂಗ್",
+    dip_a4:"ಸರ್ಕಾರಿ ಮತ್ತು ಖಾಸಗಿ ಪಾಲಿಟೆಕ್ನಿಕ್ ಕಾಲೇಜುಗಳು",
+    dip_a5:"ಅರ್ಹತೆ ಆಧಾರಿತ ನೇರ ಪ್ರವೇಶ",                    dip_a6:"B.E./B.Tech 2ನೇ ವರ್ಷಕ್ಕೆ ಲ್ಯಾಟರಲ್ ಎಂಟ್ರಿ",
+    dip_o1:"ಮೂಲ ಎಂಜಿನಿಯರಿಂಗ್ ಉದ್ಯೋಗ (ಸೈಟ್ ಎಂಜಿನಿಯರ್, ಉತ್ಪಾದನೆ, ನಿರ್ವಹಣೆ)",
+    dip_o2:"IT ಮತ್ತು ಸಾಫ್ಟ್‌ವೇರ್ ವೃತ್ತಿ (ಡೆವಲಪರ್, ಟೆಸ್ಟರ್, ಸಪೋರ್ಟ್ ಎಂಜಿನಿಯರ್)",
+    dip_o3:"ಸರ್ಕಾರಿ ಉದ್ಯೋಗ (PWD, ರೈಲ್ವೆ, BESCOM, KPTCL)",
+    dip_o4:"ಡಿಪ್ಲೋಮಾದಿಂದ ಎಂಜಿನಿಯರಿಂಗ್ (B.E/B.Tech ಲ್ಯಾಟರಲ್ ಎಂಟ್ರಿ)",
+    dip_o5:"ಕೈಗಾರಿಕಾ ಮತ್ತು ಉತ್ಪಾದನಾ ವೃತ್ತಿ (ಕಾರ್ಖಾನೆ, ಆಟೊಮೇಷನ್, CNC)",
+    dip_o6:"ಉದ್ಯಮಶೀಲತೆ (ಗುತ್ತಿಗೆದಾರ, ವರ್ಕ್‌ಶಾಪ್, ಸೇವಾ ಕೇಂದ್ರ)",
+    dip_o7:"ವಿಶೇಷ ತಾಂತ್ರಿಕ ಪಾತ್ರಗಳು (ಆಟೊಮೇಷನ್, ರೊಬೊಟಿಕ್ಸ್, ಟೂಲ್ & ಡೈ)",
+    dip_o8:"ವಿದೇಶ ಮತ್ತು ನುರಿತ ತಂತ್ರಜ್ಞ ಅವಕಾಶಗಳು",
+
+    // ── ITI
+    iti_title:"ITI ಮತ್ತು ಪಾಲಿಟೆಕ್ನಿಕ್ - ತಾಂತ್ರಿಕ ಕೌಶಲ್ಯ",
+    iti_sub:  "ಪ್ರಾಯೋಗಿಕ ತಾಂತ್ರಿಕ ಪರಿಣತಿ ಗಳಿಸಿ",
+    iti_step:"ITI/ಪಾಲಿಟೆಕ್ನಿಕ್",
+    iti_c1:"ITI ವಿದ್ಯುತ್ ತಂತ್ರಜ್ಞ",        iti_c2:"ITI ಫಿಟರ್",
+    iti_c3:"ITI ಮೆಕ್ಯಾನಿಕ್",               iti_c4:"ITI ವೆಲ್ಡರ್",
+    iti_c5:"ITI ಎಲೆಕ್ಟ್ರಾನಿಕ್ಸ್",           iti_c6:"ಪಾಲಿಟೆಕ್ನಿಕ್ ಸಿವಿಲ್",
+    iti_c7:"ಪಾಲಿಟೆಕ್ನಿಕ್ ಮೆಕ್ಯಾನಿಕಲ್",     iti_c8:"ಪಾಲಿಟೆಕ್ನಿಕ್ ಕಂಪ್ಯೂಟರ್ ವಿಜ್ಞಾನ",
+    iti_a1:"ನೇರ ಪ್ರವೇಶ (ಅರ್ಹತೆ ಆಧಾರಿತ)",  iti_a2:"ಸರ್ಕಾರಿ ITI (ಉಚಿತ/ಸಹಾಯಧನ)",
+    iti_a3:"DCET (ಪಾಲಿಟೆಕ್ನಿಕ್ ಪ್ರವೇಶ)",   iti_a4:"ಕರ್ನಾಟಕ ಡಿಪ್ಲೋಮಾ (KCET)",
+    iti_a5:"ನಿಯೋಜನ ಸಹಾಯ ಲಭ್ಯ",
+    iti_o1:"ನುರಿತ ತಂತ್ರಜ್ಞ",               iti_o2:"ಕಾರ್ಖಾನೆ ಮೇಲ್ವಿಚಾರಕ",
+    iti_o3:"ಲೈಸೆನ್ಸ್ ಹೊಂದಿದ ವಿದ್ಯುತ್ ತಂತ್ರಜ್ಞ", iti_o4:"ರೈಲ್ವೆ ತಾಂತ್ರಿಕ ಸಿಬ್ಬಂದಿ",
+    iti_o5:"KSEB/BESCOM ತಂತ್ರಜ್ಞ",         iti_o6:"ಎಂಜಿನಿಯರಿಂಗ್‌ಗೆ ಲ್ಯಾಟರಲ್ ಎಂಟ್ರಿ",
+
+    // ── Emerging
+    em_title:"ಉದಯೋನ್ಮುಖ ವೃತ್ತಿಗಳು - ಭವಿಷ್ಯದ ತಂತ್ರಜ್ಞಾನ",
+    em_sub:  "ಅತ್ಯಾಧುನಿಕ ತಂತ್ರಜ್ಞಾನದಿಂದ ಭವಿಷ್ಯ ರೂಪಿಸಿ",
+    em_c1:"AI ಮತ್ತು ಮೆಷಿನ್ ಲರ್ನಿಂಗ್",    em_c2:"ಡೇಟಾ ಸೈನ್ಸ್",
+    em_c3:"ಸೈಬರ್ ಸೆಕ್ಯೂರಿಟಿ",             em_c4:"ಬ್ಲಾಕ್‌ಚೈನ್",
+    em_c5:"ಗೇಮ್ ಡಿಸೈನ್",                 em_c6:"ಡಿಜಿಟಲ್ ಮಾರ್ಕೆಟಿಂಗ್",
+    em_c7:"UX/UI ಡಿಸೈನ್",               em_c8:"ಕ್ಲೌಡ್ ಕಂಪ್ಯೂಟಿಂಗ್",
+    em_c9:"ನವೀಕರಣ ಯೋಗ್ಯ ಶಕ್ತಿ",           em_c10:"ಜೈವಿಕ ತಂತ್ರಜ್ಞಾನ",
+    em_p1:"ಎಂಜಿನಿಯರಿಂಗ್ + ವಿಶೇಷತೆ",       em_p2:"B.Sc ಕಂಪ್ಯೂಟರ್ ವಿಜ್ಞಾನ",
+    em_p3:"BCA (ಕಂಪ್ಯೂಟರ್ ಅಪ್ಲಿಕೇಷನ್ ಸ್ನಾತಕ)", em_p4:"B.Des (ವಿನ್ಯಾಸ)",
+    em_p5:"ಆನ್‌ಲೈನ್ ಕಲಿಕೆ (Coursera/edX)", em_p6:"ಉದ್ಯಮ ಇಂಟರ್ನ್‌ಶಿಪ್‌ಗಳು",
+    em_o1:"AI/ML ಎಂಜಿನಿಯರ್",             em_o2:"ಡೇಟಾ ಸೈಂಟಿಸ್ಟ್",
+    em_o3:"ಸೈಬರ್ ಸೆಕ್ಯೂರಿಟಿ ವಿಶ್ಲೇಷಕ",    em_o4:"ಗೇಮ್ ಡೆವಲಪರ್",
+    em_o5:"ಕ್ಲೌಡ್ ಆರ್ಕಿಟೆಕ್ಟ್",           em_o6:"ರೊಬೊಟಿಕ್ಸ್ ಎಂಜಿನಿಯರ್",
+    em_o7:"ಪರಿಸರ ಸಲಹೆಗಾರ",
+
+    // ── Footer
+    footer:"ಕರ್ನಾಟಕ ವೃತ್ತಿ ಮಾರ್ಗಗಳು 2025-26 | ವಿದ್ಯಾರ್ಥಿಗಳಿಗಾಗಿ ಮಾರ್ಗದರ್ಶಿ | ಅನ್ವೇಷಿಸಿ, ಯೋಜಿಸಿ ಮತ್ತು ಯಶಸ್ವಿಯಾಗಿ"
+  }
+};
+
+// ═══════════════════════════════════
+//  Apply translations to all [t] spans
+// ═══════════════════════════════════
+function applyLang(lang) {
+    const dict = i18n[lang];
+    document.querySelectorAll('[t]').forEach(el => {
+        const key = el.getAttribute('t');
+        if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+    document.body.classList.toggle('lang-kn', lang === 'kn');
+    document.documentElement.lang = lang;
+}
+
+// ═══════════════════════════════════
+//  Language toggle
+// ═══════════════════════════════════
+function setLang(lang) {
+    applyLang(lang);
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-kn').classList.toggle('active', lang === 'kn');
+}
+
+// ═══════════════════════════════════
+//  Tab switcher — called from nav buttons
+// ═══════════════════════════════════
+function showTab(tabName, btn) {
+    document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(tabName).classList.add('active');
+    if (btn) btn.classList.add('active');
+    window.scrollTo(0, 0);
+}
+
+// Called from overview cards (no button ref)
+function showTabFromCard(tabName) {
+    document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(tabName).classList.add('active');
+    document.querySelectorAll('.nav-btn').forEach(b => {
+        if (b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + tabName + "'")) {
+            b.classList.add('active');
+        }
+    });
+    window.scrollTo(0, 0);
+}
+
+// ── Initialise with English on load
+applyLang('en');
+</script>
+</body>
+</html>
